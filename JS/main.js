@@ -289,6 +289,46 @@ function recomendaciones(){
                         };
                         break;
                 }
+                case "accion":
+                case "aventuras":
+                case "aventura":
+                switch(plataforma){
+                    case "netflix":
+                        if(serie_pelicula){
+                            alert("Top Gun: Maverick")
+                        }else {
+                            alert("La Casa de Papel")
+                        };
+                        break;
+                    case "hbo":
+                        if(serie_pelicula){
+                            alert("Tenet")
+                        }else {
+                            alert("Arrow")
+                        };
+                        break;
+                    case "prime":
+                        if(serie_pelicula){
+                            alert("Uncharted")
+                        }else {
+                            alert("The Source")
+                        };
+                        break;
+                    case "star+":
+                        if(serie_pelicula){
+                            alert("Identidad Desconocida")
+                        }else {
+                            alert("Burn Notice")
+                        };
+                        break;
+                    case "disney+":
+                        if(serie_pelicula){
+                            alert("Avengers")
+                        }else {
+                            alert("Moonknight")
+                        };
+                        break;
+                }
                 break
             default:
                 condicion = true;

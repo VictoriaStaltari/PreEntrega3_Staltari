@@ -1,298 +1,301 @@
-let serie_pelicula = prompt("Ingrese 1 si le gustaría una recomendación de película.\nIngrese 2 si le gustaría una recomendación de serie.")
-while(!(serie_pelicula=="1" || serie_pelicula=="2")){
-    alert("Valor introducido incorrecto, intente nuevamente.")
-    serie_pelicula = prompt("Ingrese 1 si le gustaría una recomendación de película.\nIngrese 2 si le gustaría una recomendación de serie.")
-}
-if (serie_pelicula==1){
-    serie_pelicula=true
-}else {
-    serie_pelicula=false
-}
-let plataforma = ""
-let condicion_plataforma = false
-do{
-    plataforma = prompt("¿Cuál plataforma de streaming desea utilizar?").toLowerCase()
-    condicion_plataforma = false
-    switch(plataforma){
-        case "netflix":
-            break;
-        case "hbo":
-        case "max":
-        case "hbo max":
-            plataforma = "hbo";
-            break;
-        case "prime":
-        case "amazon":
-        case "amazon prime":
-        case "amazon prime video":
-        case "prime video":
-            plataforma = "prime";
-            break;
-        case "star plus":
-        case "star+":
-        case "star":
-            plataforma = "star+";
-            break;
-        case "disney":
-        case "disney+":
-        case "disney plus":
-            plataforma = "disney+";
-            break;
-        default:
-            plataforma = plataforma.toUpperCase();
-            alert(`Mil disculpas, no contamos con recomendaciones para la plataforma ${plataforma}. Intente con una diferente.`);
-            condicion_plataforma = true;
+function recomendaciones(){
+    let serie_pelicula = prompt("Ingrese 1 si le gustaría una recomendación de película.\nIngrese 2 si le gustaría una recomendación de serie.")
+    while(!(serie_pelicula=="1" || serie_pelicula=="2")){
+        alert("Valor introducido incorrecto, intente nuevamente.")
+        serie_pelicula = prompt("Ingrese 1 si le gustaría una recomendación de película.\nIngrese 2 si le gustaría una recomendación de serie.")
     }
-}while(condicion_plataforma);
-let genero = "";
-let genero_acentos ="";
-let condicion = false;
-do{
-    genero_acentos = prompt("¿Qué género le gustaría mirar?").toLowerCase()
-    genero = genero_acentos.replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u")
-    condicion = false
-    switch(genero){
-        case "romantica":
-        case "romance":
-            switch(plataforma){
-                case "netflix":
-                    if(serie_pelicula){
-                        alert("Corazones Malheridos")
-                    }else {
-                        alert("Desde Cero")
-                    };
-                    break;
-                case "hbo":
-                    if(serie_pelicula){
-                        alert("peli rom hbo")
-                    }else {
-                        alert("El Cuento de la Isla")
-                    };
-                    break;
-                case "prime":
-                    if(serie_pelicula){
-                        alert("peli rom prime")
-                    }else {
-                        alert("serie rom prime")
-                    };
-                    break;
-                case "star+":
-                    if(serie_pelicula){
-                        alert("peli rom star")
-                    }else {
-                        alert("serie rom star")
-                    };
-                    break;
-                case "disney+":
-                    if(serie_pelicula){
-                        alert("peli rom disney")
-                    }else {
-                        alert("serie rom disney")
-                    };
-                    break;
-            }
-            break;
-        case "drama":
-            switch(plataforma){
-                case "netflix":
-                    if(serie_pelicula){
-                        alert("Peli drama netflix")
-                    }else {
-                        alert("Una Familia Normal")
-                    };
-                    break;
-                case "hbo":
-                    if(serie_pelicula){
-                        alert("Oppenheimer")
-                    }else {
-                        alert("Euphoria")
-                    };
-                    break;
-                case "prime":
-                    if(serie_pelicula){
-                        alert("peli drama prime")
-                    }else {
-                        alert("serie drama prime")
-                    };
-                    break;
-                case "star+":
-                    if(serie_pelicula){
-                        alert("peli drama star")
-                    }else {
-                        alert("serie drama star")
-                    };
-                    break;
-                case "disney+":
-                    if(serie_pelicula){
-                        alert("peli drama disney")
-                    }else {
-                        alert("serie drama disney")
-                    };
-                    break;
-            }
-            break;
-        case "terror":
-            switch(plataforma){
-                case "netflix":
-                    if(serie_pelicula){
-                        alert("Peli terror netflix")
-                    }else {
-                        alert("Marianne")
-                    };
-                    break;
-                case "hbo":
-                    if(serie_pelicula){
-                        alert("peli terror hbo")
-                    }else {
-                        alert("Supernatural")
-                    };
-                    break;
-                case "prime":
-                    if(serie_pelicula){
-                        alert("peli terror prime")
-                    }else {
-                        alert("serie terror prime")
-                    };
-                    break;
-                case "star+":
-                    if(serie_pelicula){
-                        alert("peli terror star")
-                    }else {
-                        alert("serie terror star")
-                    };
-                    break;
-                case "disney+":
-                    if(serie_pelicula){
-                        alert("peli terror disney")
-                    }else {
-                        alert("serie terror disney")
-                    };
-                    break;
-            }
-            break;
-        case "comedia":
-            switch(plataforma){
-                case "netflix":
-                    if(serie_pelicula){
-                        alert("Peli comedia netfl")
-                    }else {
-                        alert("The Office")
-                    };
-                    break;
-                case "hbo":
-                    if(serie_pelicula){
-                        alert("peli comedia hbo")
-                    }else {
-                        alert("The Big Bang Theory")
-                    };
-                    break;
-                case "prime":
-                    if(serie_pelicula){
-                        alert("peli comedia prime")
-                    }else {
-                        alert("serie comedia prime")
-                    };
-                    break;
-                case "star+":
-                    if(serie_pelicula){
-                        alert("peli comedia star")
-                    }else {
-                        alert("serie comedia star")
-                    };
-                    break;
-                case "disney+":
-                    if(serie_pelicula){
-                        alert("peli comedia disney")
-                    }else {
-                        alert("serie comedia disney")
-                    };
-                    break;
-            }
-            break;
-        case "crimen":
-        case "policiales":
-        case "policial":
-            switch(plataforma){
-                case "netflix":
-                    if(serie_pelicula){
-                        alert("Peli mus netflix")
-                    }else {
-                        alert("The Sinner")
-                    };
-                    break;
-                case "hbo":
-                    if(serie_pelicula){
-                        alert("peli mus hbo")
-                    }else {
-                        alert("True Detective")
-                    };
-                    break;
-                case "prime":
-                    if(serie_pelicula){
-                        alert("peli mus prime")
-                    }else {
-                        alert("serie mus prime")
-                    };
-                    break;
-                case "star+":
-                    if(serie_pelicula){
-                        alert("peli mus star")
-                    }else {
-                        alert("serie mus star")
-                    };
-                    break;
-                case "disney+":
-                    if(serie_pelicula){
-                        alert("peli mus disney")
-                    }else {
-                        alert("serie mus disney")
-                    };
-                    break;
-            }
-            break;
-        case "ciencia ficcion":
-            switch(plataforma){
-                case "netflix":
-                    if(serie_pelicula){
-                        alert("Peli cf netflix")
-                    }else {
-                        alert("Los 100")
-                    };
-                    break;
-                case "hbo":
-                    if(serie_pelicula){
-                        alert("Interestelar")
-                    }else {
-                        alert("The Last of Us")
-                    };
-                    break;
-                case "prime":
-                    if(serie_pelicula){
-                        alert("peli cf prime")
-                    }else {
-                        alert("serie cf prime")
-                    };
-                    break;
-                case "star+":
-                    if(serie_pelicula){
-                        alert("peli cf star")
-                    }else {
-                        alert("serie cf star")
-                    };
-                    break;
-                case "disney+":
-                    if(serie_pelicula){
-                        alert("peli cf disney")
-                    }else {
-                        alert("serie cf disney")
-                    };
-                    break;
-            }
-            break
-        default:
-            condicion = true;
-            genero_acentos = genero_acentos.toUpperCase()
-            alert(`Mil disculpas, no tenemos recomendaciones para el género ${genero_acentos}. Pruebe con uno distinto.`)
-            break;
-    };
-} while(condicion)
+    if (serie_pelicula==1){
+        serie_pelicula=true
+    }else {
+        serie_pelicula=false
+    }
+    let plataforma = ""
+    let condicion_plataforma = false
+    do{
+        plataforma = prompt("¿Cuál plataforma de streaming desea utilizar?").toLowerCase()
+        condicion_plataforma = false
+        switch(plataforma){
+            case "netflix":
+                break;
+            case "hbo":
+            case "max":
+            case "hbo max":
+                plataforma = "hbo";
+                break;
+            case "prime":
+            case "amazon":
+            case "amazon prime":
+            case "amazon prime video":
+            case "prime video":
+                plataforma = "prime";
+                break;
+            case "star plus":
+            case "star+":
+            case "star":
+                plataforma = "star+";
+                break;
+            case "disney":
+            case "disney+":
+            case "disney plus":
+                plataforma = "disney+";
+                break;
+            default:
+                plataforma = plataforma.toUpperCase();
+                alert(`Mil disculpas, no contamos con recomendaciones para la plataforma ${plataforma}. Intente con una diferente.`);
+                condicion_plataforma = true;
+        }
+    }while(condicion_plataforma);
+    let genero = "";
+    let genero_acentos ="";
+    let condicion = false;
+    do{
+        genero_acentos = prompt("¿Qué género le gustaría mirar?").toLowerCase()
+        genero = genero_acentos.replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u")
+        condicion = false
+        switch(genero){
+            case "romantica":
+            case "romance":
+                switch(plataforma){
+                    case "netflix":
+                        if(serie_pelicula){
+                            alert("Corazones Malheridos")
+                        }else {
+                            alert("Desde Cero")
+                        };
+                        break;
+                    case "hbo":
+                        if(serie_pelicula){
+                            alert("Mi Primer Amor")
+                        }else {
+                            alert("El Cuento de la Isla")
+                        };
+                        break;
+                    case "prime":
+                        if(serie_pelicula){
+                            alert("About Time")
+                        }else {
+                            alert("With Love")
+                        };
+                        break;
+                    case "star+":
+                        if(serie_pelicula){
+                            alert("Titanic")
+                        }else {
+                            alert("El Beso del Destino")
+                        };
+                        break;
+                    case "disney+":
+                        if(serie_pelicula){
+                            alert("Bajo la Misma Estrella")
+                        }else {
+                            alert("New Girl")
+                        };
+                        break;
+                }
+                break;
+            case "drama":
+                switch(plataforma){
+                    case "netflix":
+                        if(serie_pelicula){
+                            alert("A Dos Metros de Ti")
+                        }else {
+                            alert("Una Familia Normal")
+                        };
+                        break;
+                    case "hbo":
+                        if(serie_pelicula){
+                            alert("Oppenheimer")
+                        }else {
+                            alert("Euphoria")
+                        };
+                        break;
+                    case "prime":
+                        if(serie_pelicula){
+                            alert("Saltburn")
+                        }else {
+                            alert("Solos")
+                        };
+                        break;
+                    case "star+":
+                        if(serie_pelicula){
+                            alert("Abzurdah")
+                        }else {
+                            alert("Terapia Alternativa")
+                        };
+                        break;
+                    case "disney+":
+                        if(serie_pelicula){
+                            alert("Cruella")
+                        }else {
+                            alert("Loki")
+                        };
+                        break;
+                }
+                break;
+            case "terror":
+                switch(plataforma){
+                    case "netflix":
+                        if(serie_pelicula){
+                            alert("No Respires")
+                        }else {
+                            alert("Marianne")
+                        };
+                        break;
+                    case "hbo":
+                        if(serie_pelicula){
+                            alert("The Nun")
+                        }else {
+                            alert("Supernatural")
+                        };
+                        break;
+                    case "prime":
+                        if(serie_pelicula){
+                            alert("Talk to Me")
+                        }else {
+                            alert("The Exorcist")
+                        };
+                        break;
+                    case "star+":
+                        if(serie_pelicula){
+                            alert("La Cura Siniestra")
+                        }else {
+                            alert("Sangre Maldita")
+                        };
+                        break;
+                    case "disney+":
+                        if(serie_pelicula){
+                            alert("Mansión Embrujada")
+                        }else {
+                            alert("Herederos de la Noche")
+                        };
+                        break;
+                }
+                break;
+            case "comedia":
+                switch(plataforma){
+                    case "netflix":
+                        if(serie_pelicula){
+                            alert("Permitidos")
+                        }else {
+                            alert("The Office")
+                        };
+                        break;
+                    case "hbo":
+                        if(serie_pelicula){
+                            alert("Aceptados")
+                        }else {
+                            alert("The Big Bang Theory")
+                        };
+                        break;
+                    case "prime":
+                        if(serie_pelicula){
+                            alert("Papá por Accidente")
+                        }else {
+                            alert("Casados con Hijos")
+                        };
+                        break;
+                    case "star+":
+                        if(serie_pelicula){
+                            alert("Un Novio para mi Mujer")
+                        }else {
+                            alert("How I Met your Mother")
+                        };
+                        break;
+                    case "disney+":
+                        if(serie_pelicula){
+                            alert("27 Bodas")
+                        }else {
+                            alert("How I Met your Father")
+                        };
+                        break;
+                }
+                break;
+            case "crimen":
+            case "policiales":
+            case "policial":
+                switch(plataforma){
+                    case "netflix":
+                        if(serie_pelicula){
+                            alert("¿Qué Hizo Jennifer?")
+                        }else {
+                            alert("The Sinner")
+                        };
+                        break;
+                    case "hbo":
+                        if(serie_pelicula){
+                            alert("Asesino sin Memoria")
+                        }else {
+                            alert("True Detective")
+                        };
+                        break;
+                    case "prime":
+                        if(serie_pelicula){
+                            alert("The Alphabet Killer")
+                        }else {
+                            alert("Law and Order")
+                        };
+                        break;
+                    case "star+":
+                        if(serie_pelicula){
+                            alert("El Bandido Perfecto")
+                        }else {
+                            alert("La Próxima Apuesta")
+                        };
+                        break;
+                    case "disney+":
+                        if(serie_pelicula){
+                            alert("Inspector Gadget")
+                        }else {
+                            alert("Daredevil")
+                        };
+                        break;
+                }
+                break;
+            case "ciencia ficcion":
+                switch(plataforma){
+                    case "netflix":
+                        if(serie_pelicula){
+                            alert("Presagio")
+                        }else {
+                            alert("Los 100")
+                        };
+                        break;
+                    case "hbo":
+                        if(serie_pelicula){
+                            alert("Interestelar")
+                        }else {
+                            alert("The Last of Us")
+                        };
+                        break;
+                    case "prime":
+                        if(serie_pelicula){
+                            alert("Dune")
+                        }else {
+                            alert("Night Sky")
+                        };
+                        break;
+                    case "star+":
+                        if(serie_pelicula){
+                            alert("El Precio del Mañana")
+                        }else {
+                            alert("Lost")
+                        };
+                        break;
+                    case "disney+":
+                        if(serie_pelicula){
+                            alert("Avatar")
+                        }else {
+                            alert("Once Upon a Time")
+                        };
+                        break;
+                }
+                break
+            default:
+                condicion = true;
+                genero_acentos = genero_acentos.toUpperCase()
+                alert(`Mil disculpas, no tenemos recomendaciones para el género ${genero_acentos}. Pruebe con uno distinto.`)
+                break;
+        };
+    } while(condicion)
+}
+recomendaciones()

@@ -12,7 +12,7 @@ function recomendaciones(){
     let plataforma = ""
     let condicion_plataforma = false
     do{
-        plataforma = prompt("¿Cuál plataforma de streaming desea utilizar?").toLowerCase()
+        plataforma = prompt("¿Cuál plataforma de streaming desea utilizar?").toLowerCase().replace(/ /g,"")
         condicion_plataforma = false
         switch(plataforma){
             case "netflix":
@@ -24,14 +24,14 @@ function recomendaciones(){
                 break;
             case "prime":
             case "amazon":
-            case "amazon prime":
-            case "amazon prime video":
-            case "amazon video":
-            case "prime video":
+            case "amazonprime":
+            case "amazonprimevideo":
+            case "amazonvideo":
+            case "primevideo":
                 plataforma = "prime";
                 break;
-            case "star plus":
-            case "star +":
+            case "starplus":
+            case "star+":
             case "starplus":
             case "star+":
             case "star":
@@ -39,7 +39,7 @@ function recomendaciones(){
                 break;
             case "disney":
             case "disney+":
-            case "disney plus":
+            case "disneyplus":
                 plataforma = "disney+";
                 break;
             default:
@@ -53,7 +53,7 @@ function recomendaciones(){
     let condicion = false;
     do{
         genero_acentos = prompt("¿Qué género le gustaría mirar?").toLowerCase()
-        genero = genero_acentos.replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u")
+        genero = genero_acentos.replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
         condicion = false
         switch(genero){
             case "romantica":
@@ -256,7 +256,7 @@ function recomendaciones(){
                         break;
                 }
                 break;
-            case "ciencia ficcion":
+            case "cienciaficcion":
                 switch(plataforma){
                     case "netflix":
                         if(serie_pelicula){

@@ -1,10 +1,11 @@
 function recomendaciones(){
-    let serie_pelicula = prompt("Ingrese 1 si le gustaría una recomendación de película.\nIngrese 2 si le gustaría una recomendación de serie.")
-    while(!(serie_pelicula=="1" || serie_pelicula=="2")){
+    let serie_pelicula = prompt("Ingrese si le gustaría una recomendación de película o de serie.").toLowerCase
+    serie_pelicula = serie_pelicula.replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
+    while(!(serie_pelicula=="pelicula" || serie_pelicula=="serie")){
         alert("Valor introducido incorrecto, intente nuevamente.")
-        serie_pelicula = prompt("Ingrese 1 si le gustaría una recomendación de película.\nIngrese 2 si le gustaría una recomendación de serie.")
+        serie_pelicula = prompt("Ingrese si le gustaría una recomendación de película o de serie.")
     }
-    if (serie_pelicula==1){
+    if (serie_pelicula=="pelicula"){
         serie_pelicula=true
     }else {
         serie_pelicula=false

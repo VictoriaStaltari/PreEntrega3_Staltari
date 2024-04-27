@@ -26,10 +26,13 @@ function recomendaciones(){
             case "amazon":
             case "amazon prime":
             case "amazon prime video":
+            case "amazon video":
             case "prime video":
                 plataforma = "prime";
                 break;
             case "star plus":
+            case "star +":
+            case "starplus":
             case "star+":
             case "star":
                 plataforma = "star+";
@@ -54,6 +57,7 @@ function recomendaciones(){
         condicion = false
         switch(genero){
             case "romantica":
+            case "amor":
             case "romance":
                 switch(plataforma){
                     case "netflix":
@@ -133,6 +137,7 @@ function recomendaciones(){
                 }
                 break;
             case "terror":
+            case "horror":
                 switch(plataforma){
                     case "netflix":
                         if(serie_pelicula){

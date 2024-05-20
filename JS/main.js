@@ -1,94 +1,28 @@
-const datos = [
-    // Películas Netflix
-    { serie_pelicula: "pelicula", plataforma: "netflix", genero: "romance", nombre: "Corazones Malheridos" },
-    { serie_pelicula: "pelicula", plataforma: "netflix", genero: "drama", nombre: "A Dos Metros de Ti" },
-    { serie_pelicula: "pelicula", plataforma: "netflix", genero: "terror", nombre: "No Respires" },
-    { serie_pelicula: "pelicula", plataforma: "netflix", genero: "comedia", nombre: "Permitidos" },
-    { serie_pelicula: "pelicula", plataforma: "netflix", genero: "policial", nombre: "¿Qué Hizo Jennifer?" },
-    { serie_pelicula: "pelicula", plataforma: "netflix", genero: "cienciaficcion", nombre: "Presagio" },
-    { serie_pelicula: "pelicula", plataforma: "netflix", genero: "accion", nombre: "Top Gun: Maverick" },
-    
-    // Películas HBO
-    { serie_pelicula: "pelicula", plataforma: "hbo", genero: "romance", nombre: "Mi Primer Amor" },
-    { serie_pelicula: "pelicula", plataforma: "hbo", genero: "drama", nombre: "Oppenheimer" },
-    { serie_pelicula: "pelicula", plataforma: "hbo", genero: "terror", nombre: "The Nun" },
-    { serie_pelicula: "pelicula", plataforma: "hbo", genero: "comedia", nombre: "Aceptados" },
-    { serie_pelicula: "pelicula", plataforma: "hbo", genero: "policial", nombre: "Asesino sin Memoria" },
-    { serie_pelicula: "pelicula", plataforma: "hbo", genero: "cienciaficcion", nombre: "Interestelar" },
-    { serie_pelicula: "pelicula", plataforma: "hbo", genero: "accion", nombre: "Tenet" },
-
-    // Películas Prime
-    { serie_pelicula: "pelicula", plataforma: "prime", genero: "romance", nombre: "About Time" },
-    { serie_pelicula: "pelicula", plataforma: "prime", genero: "drama", nombre: "Saltburn" },
-    { serie_pelicula: "pelicula", plataforma: "prime", genero: "terror", nombre: "Talk to Me" },
-    { serie_pelicula: "pelicula", plataforma: "prime", genero: "comedia", nombre: "Papá por Accidente" },
-    { serie_pelicula: "pelicula", plataforma: "prime", genero: "policial", nombre: "The Alphabet Killer" },
-    { serie_pelicula: "pelicula", plataforma: "prime", genero: "cienciaficcion", nombre: "Dune" },
-    { serie_pelicula: "pelicula", plataforma: "prime", genero: "accion", nombre: "Uncharted" },
-
-    // Películas Star
-    { serie_pelicula: "pelicula", plataforma: "star", genero: "romance", nombre: "Titanic" },
-    { serie_pelicula: "pelicula", plataforma: "star", genero: "drama", nombre: "Abzurdah" },
-    { serie_pelicula: "pelicula", plataforma: "star", genero: "terror", nombre: "La Cura Siniestra" },
-    { serie_pelicula: "pelicula", plataforma: "star", genero: "comedia", nombre: "Un Novio para mi Mujer" },
-    { serie_pelicula: "pelicula", plataforma: "star", genero: "policial", nombre: "El Bandido Perfecto" },
-    { serie_pelicula: "pelicula", plataforma: "star", genero: "cienciaficcion", nombre: "El Precio del Mañana" },
-    { serie_pelicula: "pelicula", plataforma: "star", genero: "accion", nombre: "Identidad Desconocida" },
-
-    // Películas Disney
-    { serie_pelicula: "pelicula", plataforma: "disney", genero: "romance", nombre: "Bajo la Misma Estrella" },
-    { serie_pelicula: "pelicula", plataforma: "disney", genero: "drama", nombre: "Cruella" },
-    { serie_pelicula: "pelicula", plataforma: "disney", genero: "terror", nombre: "Mansión Embrujada" },
-    { serie_pelicula: "pelicula", plataforma: "disney", genero: "comedia", nombre: "27 Bodas" },
-    { serie_pelicula: "pelicula", plataforma: "disney", genero: "policial", nombre: "Inspector Gadget" },
-    { serie_pelicula: "pelicula", plataforma: "disney", genero: "cienciaficcion", nombre: "Avatar" },
-    { serie_pelicula: "pelicula", plataforma: "disney", genero: "accion", nombre: "Avengers" },
-
-    // Series Netflix
-    { serie_pelicula: "serie", plataforma: "netflix", genero: "romance", nombre: "Desde Cero" },
-    { serie_pelicula: "serie", plataforma: "netflix", genero: "drama", nombre: "Una Familia Normal" },
-    { serie_pelicula: "serie", plataforma: "netflix", genero: "terror", nombre: "Marianne" },
-    { serie_pelicula: "serie", plataforma: "netflix", genero: "comedia", nombre: "The Office" },
-    { serie_pelicula: "serie", plataforma: "netflix", genero: "policial", nombre: "The Sinner" },
-    { serie_pelicula: "serie", plataforma: "netflix", genero: "cienciaficcion", nombre: "Los 100" },
-    { serie_pelicula: "serie", plataforma: "netflix", genero: "accion", nombre: "La Casa de Papel" },
-    
-    // Series HBO
-    { serie_pelicula: "serie", plataforma: "hbo", genero: "romance", nombre: "El Cuento de la Isla" },
-    { serie_pelicula: "serie", plataforma: "hbo", genero: "drama", nombre: "Euphoria" },
-    { serie_pelicula: "serie", plataforma: "hbo", genero: "terror", nombre: "Supernatural" },
-    { serie_pelicula: "serie", plataforma: "hbo", genero: "comedia", nombre: "The Big Bang Theory" },
-    { serie_pelicula: "serie", plataforma: "hbo", genero: "policial", nombre: "True Detective" },
-    { serie_pelicula: "serie", plataforma: "hbo", genero: "cienciaficcion", nombre: "The Last of Us" },
-    { serie_pelicula: "serie", plataforma: "hbo", genero: "accion", nombre: "Arrow" },
-
-    // Series Prime
-    { serie_pelicula: "serie", plataforma: "prime", genero: "romance", nombre: "With Love" },
-    { serie_pelicula: "serie", plataforma: "prime", genero: "drama", nombre: "Solos" },
-    { serie_pelicula: "serie", plataforma: "prime", genero: "terror", nombre: "The Exorcist" },
-    { serie_pelicula: "serie", plataforma: "prime", genero: "comedia", nombre: "Casados con Hijos" },
-    { serie_pelicula: "serie", plataforma: "prime", genero: "policial", nombre: "Law and Order" },
-    { serie_pelicula: "serie", plataforma: "prime", genero: "cienciaficcion", nombre: "Night Sky" },
-    { serie_pelicula: "serie", plataforma: "prime", genero: "accion", nombre: "The Source" },
-
-    // Series Star
-    { serie_pelicula: "serie", plataforma: "star", genero: "romance", nombre: "El Beso del Destino" },
-    { serie_pelicula: "serie", plataforma: "star", genero: "drama", nombre: "Terapia Alternativa" },
-    { serie_pelicula: "serie", plataforma: "star", genero: "terror", nombre: "Sangre Maldita" },
-    { serie_pelicula: "serie", plataforma: "star", genero: "comedia", nombre: "How I Met your Mother" },
-    { serie_pelicula: "serie", plataforma: "star", genero: "policial", nombre: "La Próxima Apuesta" },
-    { serie_pelicula: "serie", plataforma: "star", genero: "cienciaficcion", nombre: "Lost" },
-    { serie_pelicula: "serie", plataforma: "star", genero: "accion", nombre: "Burn Notice" },
-
-    // Series Disney
-    { serie_pelicula: "serie", plataforma: "disney", genero: "romance", nombre: "New Girl" },
-    { serie_pelicula: "serie", plataforma: "disney", genero: "drama", nombre: "Loki" },
-    { serie_pelicula: "serie", plataforma: "disney", genero: "terror", nombre: "Herederos de la Noche" },
-    { serie_pelicula: "serie", plataforma: "disney", genero: "comedia", nombre: "How I Met your Father" },
-    { serie_pelicula: "serie", plataforma: "disney", genero: "policial", nombre: "Daredevil" },
-    { serie_pelicula: "serie", plataforma: "disney", genero: "cienciaficcion", nombre: "Once Upon a Time" },
-    { serie_pelicula: "serie", plataforma: "disney", genero: "accion", nombre: "Moonknight" }
-];    
+const  Recomendar = function(serie_pelicula, plataforma, genero, nombre){
+    this.serie_pelicula = serie_pelicula
+    this.plataforma = plataforma
+    this.genero = genero
+    this.nombre = nombre
+}
+const tipos = ["pelicula", "serie"]
+const plataformas = ["netflix", "hbo", "prime", "star", "disney"]
+const generos = ["romance", "drama", "terror", "comedia", "policial", "cienciaficcion", "accion"]
+const nombres = ["Corazones Malheridos", "A Dos Metros de Ti", "No Respires", "Permitidos", "¿Qué Hizo Jennifer?", "Presagio", "Top Gun: Maverick", "Mi Primer Amor", "Oppenheimer", "The Nun", "Aceptados", "Asesino sin Memoria", "Interestelar", "Tenet", "About Time", "Saltburn", "Talk to Me", "Papá por Accidente", "The Alphabet Killer", "Dune", "Uncharted", "Titanic", "Abzurdah", "La Cura Siniestra", "Un Novio para mi Mujer", "El Bandido Perfecto", "El Precio del Mañana", "Identidad Desconocida", "Bajo la Misma Estrella", "Cruella", "Mansión Embrujada", "27 Bodas", "Inspector Gadget", "Avatar", "Avengers", "Desde Cero", "Una Familia Normal", "Marianne", "The Office", "The Sinner", "Los 100", "La Casa de Papel", "El Cuento de la Isla", "Euphoria", "Supernatural", "The Big Bang Theory", "True Detective", "The Last of Us", "Arrow", "With Love", "Solos", "The Exorcist", "Casados con Hijos", "Law and Order", "Night Sky", "The Source", "How I Met your Mother", "La Próxima Apuesta", "Lost", "Burn Notice", "New Girl", "Loki", "Herederos de la Noche", "How I Met your Father", "Daredevil", "Once Upon a Time", "Moonknight"];
+let datos = []
+let i = 0
+function armar_objetos(){
+    for (let tipo of tipos){
+        for (let plataforma of plataformas){
+            for (let genero of generos){
+                let reco = new Recomendar(tipo,plataforma,genero,nombres[i])
+                datos.push(reco)
+                i = i+1
+            }
+        }
+    }
+}
+armar_objetos()
+console.log(datos)
 let serie_pelicula_recom = prompt("Si desea filtrar las recomendaciones en series o peliculas especifiquelo aquí, de no querer hacerlo no ingrese ninguna palabra y oprima aceptar.").toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
 while(!(serie_pelicula_recom=="pelicula" || serie_pelicula_recom=="serie" || serie_pelicula_recom=="")){
     alert("Valor introducido incorrecto, intente nuevamente.")

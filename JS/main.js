@@ -22,7 +22,6 @@ function armar_objetos(){
     }
 }
 armar_objetos()
-console.log(datos)
 let serie_pelicula_recom = prompt("Si desea filtrar las recomendaciones en series o peliculas especifiquelo aquí, de no querer hacerlo no ingrese ninguna palabra y oprima aceptar.").toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
 while(!(serie_pelicula_recom=="pelicula" || serie_pelicula_recom=="serie" || serie_pelicula_recom=="")){
     alert("Valor introducido incorrecto, intente nuevamente.")

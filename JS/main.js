@@ -1,9 +1,14 @@
 condicion = true
 let jugadores= {}
 do{
-    let nombre=prompt("Ingrese el nombre del jugador")
-    jugadores[nombre] = 0
+    let nombre=prompt("Ingrese el nombre del jugador").toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
+    if (nombre == ""){
+        condicion = false
+    }else{
+        jugadores[nombre] = 0
+    }
 }while(condicion)
+sessionStorage.setItem("jugadores",JSON.stringify(jugadores))
 let tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true}
 //Casillero 1
 let casillero1 = document.getElementById("casillero1")
@@ -81,20 +86,19 @@ function finalizar_juego(){
             total += parseInt(cas)
         }
     }
-    //Session Storage
     let nombre = prompt("Nombre del Jugador").toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
-    let jugadores;
-    let jugadores_SS = JSON.stringify(sessionStorage.getItem(`jugadores`))
-    if (jugadores_SS) {
-        jugadores = JSON.parse(jugadores_SS)
-        if(nombre in jugadores){
+
+    //Session Storage
+    let jugadores_SS = sessionStorage.getItem("jugadores")
+    jugadores = JSON.parse(jugadores_SS)
+    console.log(typeof jugadores)
+    if(nombre in jugadores){
         jugadores[nombre] += total
-        }
     } else {
         jugadores[nombre] = total;
     }
     sessionStorage.setItem('jugadores', JSON.stringify(jugadores))
-    
+
     //Continuar?
     let continuar = confirm(`Tu puntaje es de: ${total}, ${nombre}. ¿Desea jugar nuevamente?`)
     if (continuar){
@@ -107,12 +111,12 @@ boton_final_juego.addEventListener("click", finalizar_juego)
 //Mostrar Puntajes
 function mostrar_puntajes(){
     let jugadores_SS = sessionStorage.getItem('jugadores');
-    let jugadores = jugadores_SS ? JSON.parse(jugadores_SS) : {};
+    let jugadores = JSON.parse(jugadores_SS)
     let puntajesElemento = document.getElementById('puntajes')
-    let puntajesTexto = ''
+    let puntajes_texto = ''
     for (let nombre in jugadores) {
-        puntajesTexto += `${nombre}: ${jugadores[nombre]} puntos\n`;
+        puntajes_texto += `${nombre}: ${jugadores[nombre]} puntos\n`;
     }
-    puntajesElemento.innerText = puntajesTexto;
+    puntajesElemento.innerText = puntajes_texto;
 }
 boton_puntos.addEventListener('click', mostrar_puntajes)

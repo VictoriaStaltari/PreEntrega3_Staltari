@@ -1,120 +1,118 @@
-const  Recomendar = function(serie_pelicula, plataforma, genero, nombre){
-    this.serie_pelicula = serie_pelicula
-    this.plataforma = plataforma
-    this.genero = genero
-    this.nombre = nombre
+condicion = true
+let jugadores= {}
+do{
+    let nombre=prompt("Ingrese el nombre del jugador")
+    jugadores[nombre] = 0
+}while(condicion)
+let tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true}
+//Casillero 1
+let casillero1 = document.getElementById("casillero1")
+let contenedor_cas1 = document.getElementById("contenedor_cas1")
+contenedor_cas1.addEventListener("click", ()=> tablero[1] = false)
+//Casillero 2
+let casillero2 = document.getElementById("casillero2")
+let contenedor_cas2 = document.getElementById("contenedor_cas2")
+contenedor_cas2.addEventListener("click", ()=> tablero[2] = false)
+//Casillero 3
+let casillero3 = document.getElementById("casillero3")
+let contenedor_cas3 = document.getElementById("contenedor_cas3")
+contenedor_cas3.addEventListener("click", ()=> tablero[3] = false)
+//Casillero 4
+let casillero4 = document.getElementById("casillero4")
+let contenedor_cas4 = document.getElementById("contenedor_cas4")
+contenedor_cas4.addEventListener("click", ()=> tablero[4] = false)
+//Casillero 5
+let casillero5 = document.getElementById("casillero5")
+let contenedor_cas5 = document.getElementById("contenedor_cas5")
+contenedor_cas5.addEventListener("click", ()=> tablero[5] = false)
+//Casillero 6
+let casillero6 = document.getElementById("casillero6")
+let contenedor_cas6 = document.getElementById("contenedor_cas6")
+contenedor_cas6.addEventListener("click", ()=> tablero[6] = false)
+//Casillero 7
+let casillero7 = document.getElementById("casillero7")
+let contenedor_cas7 = document.getElementById("contenedor_cas7")
+contenedor_cas7.addEventListener("click", ()=> tablero[7] = false)
+//Casillero 8
+let casillero8 = document.getElementById("casillero8")
+let contenedor_cas8 = document.getElementById("contenedor_cas8")
+contenedor_cas8.addEventListener("click", ()=> tablero[8] = false)
+//Casillero 9
+let casillero9 = document.getElementById("casillero9")
+let contenedor_cas9 = document.getElementById("contenedor_cas9")
+contenedor_cas9.addEventListener("click", ()=> tablero[9] = false)
+
+let tablero_vista = [casillero1, casillero2, casillero3, casillero4, casillero5, casillero6, casillero7, casillero8, casillero9]
+let boton_dados = document.getElementById("boton_dados")
+let boton_final_juego = document.getElementById("finalizar_juego")
+let boton_puntos = document.getElementById('boton_puntos')
+
+//Funciones
+
+function tirar_dado(){
+    let dado = Math.random()*6
+    dado = Math.ceil(dado)
+    return dado
 }
-const tipos = ["pelicula", "serie"]
-const plataformas = ["netflix", "hbo", "prime", "star", "disney"]
-const generos = ["romance", "drama", "terror", "comedia", "policial", "cienciaficcion", "accion"]
-const nombres = ["Corazones Malheridos", "A Dos Metros de Ti", "No Respires", "Permitidos", "¿Qué Hizo Jennifer?", "Presagio", "Top Gun: Maverick", "Mi Primer Amor", "Oppenheimer", "The Nun", "Aceptados", "Asesino sin Memoria", "Interestelar", "Tenet", "About Time", "Saltburn", "Talk to Me", "Papá por Accidente", "The Alphabet Killer", "Dune", "Uncharted", "Titanic", "Abzurdah", "La Cura Siniestra", "Un Novio para mi Mujer", "El Bandido Perfecto", "El Precio del Mañana", "Identidad Desconocida", "Bajo la Misma Estrella", "Cruella", "Mansión Embrujada", "27 Bodas", "Inspector Gadget", "Avatar", "Avengers", "Desde Cero", "Una Familia Normal", "Marianne", "The Office", "The Sinner", "Los 100", "La Casa de Papel", "El Cuento de la Isla", "Euphoria", "Supernatural", "The Big Bang Theory", "True Detective", "The Last of Us", "Arrow", "With Love", "Solos", "The Exorcist", "Casados con Hijos", "Law and Order", "Night Sky", "The Source", "El Beso del Destino", "Terapia Alternativa", "Sangre Maldita", "How I Met your Mother", "La Próxima Apuesta", "Lost", "Burn Notice", "New Girl", "Loki", "Herederos de la Noche", "How I Met your Father", "Daredevil", "Once Upon a Time", "Moonknight"];
-let datos = []
-let i = 0
-function armar_objetos(){
-    for (let tipo of tipos){
-        for (let plataforma of plataformas){
-            for (let genero of generos){
-                let reco = new Recomendar(tipo,plataforma,genero,nombres[i])
-                datos.push(reco)
-                i = i+1
-            }
+function dados(){
+    let d1 = tirar_dado()
+    let d2 = tirar_dado()
+    document.getElementById("dados").innerText = `Dados: ${d1}, ${d2} Total: ${d1 + d2}`
+}
+boton_dados.addEventListener("click", dados)
+function actualizar_tablero(){
+    for (let a in tablero){
+        if (tablero[a]){
+            tablero_vista[a-1].innerText = "Abierto"
+        }else{
+            tablero_vista[a-1].innerText = "Cerrado"
         }
     }
 }
-armar_objetos()
-let serie_pelicula_recom = prompt("Si desea filtrar las recomendaciones en series o peliculas especifiquelo aquí, de no querer hacerlo no ingrese ninguna palabra y oprima aceptar.").toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
-while(!(serie_pelicula_recom=="pelicula" || serie_pelicula_recom=="serie" || serie_pelicula_recom=="")){
-    alert("Valor introducido incorrecto, intente nuevamente.")
-    serie_pelicula_recom = prompt("Si desea filtrar las recomendaciones en series o peliculas especifiquelo aquí, de no querer hacerlo no ingrese ninguna palabra y oprima aceptar.").toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
-}
-let plataforma_recom = ""
-let condicion_plataforma = false
-do{
-    plataforma_recom = prompt("Si desea filtrar las recomendaciones por plataforma ingrese la plataforma aquí, en caso de no querer hacerlo no ingrese ninguna palabra y oprima aceptar.").toLowerCase().replace(/ /g,"")
-    condicion_plataforma = false
-    switch(plataforma_recom){
-        case "netflix":
-            break;
-        case "hbo":
-        case "max":
-        case "hbo max":
-            plataforma_recom = "hbo";
-            break;
-        case "prime":
-        case "amazon":
-        case "amazonprime":
-        case "amazonprimevideo":
-        case "amazonvideo":
-        case "primevideo":
-            plataforma_recom = "prime";
-            break;
-        case "starplus":
-        case "star+":
-        case "starplus":
-        case "star+":
-        case "star":
-            plataforma_recom = "star";
-            break;
-        case "disney":
-        case "disney+":
-        case "disneyplus":
-            plataforma_recom = "disney";
-            break;
-        case "":
-            break;
-        default:
-            plataforma_recom = plataforma_recom.toUpperCase();
-            alert(`Mil disculpas, no contamos con recomendaciones para la plataforma ${plataforma_recom}. Intente con una diferente.`);
-            condicion_plataforma = true;
+actualizar_tablero()
+let contenedor_casilleros = document.getElementById("tablero")
+contenedor_casilleros.addEventListener("click",actualizar_tablero)
+
+//Finalizar Juego
+function finalizar_juego(){
+    let total = 0
+    for (cas in tablero){
+        if (tablero[cas]){
+            total += parseInt(cas)
+        }
     }
-}while(condicion_plataforma);
-do{
-    genero_acentos = prompt("Si desea filtrar las recomendaciones por género ingrese el género aquí, en caso de no querer hacerlo no ingrese ninguna palabra y oprima aceptar.").toLowerCase()
-    genero_recom = genero_acentos.replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
-    condicion = false
-    switch(genero_recom){
-        case "romantica":
-        case "amor":
-        case "romance":
-            genero_recom = "romance";
-            break;
-        case "drama":
-            break
-        case "terror":
-        case "horror":
-            genero_recom = "terror";
-            break;
-        case "comedia":
-            break;
-        case "crimen":
-        case "policiales":
-        case "policial":
-            genero_recom = "policial";
-            break;
-        case "cienciaficcion":
-            break;
-        case "accion":
-        case "aventuras":
-        case "aventura":
-            genero_recom = "accion";
-            break;
-        case "":
-            break;
-        default:
-            condicion = true;
-            genero_acentos = genero_acentos.toUpperCase()
-                alert(`Mil disculpas, no tenemos recomendaciones para el género ${genero_acentos}. Pruebe con uno distinto.`)
-            break;
-        };
-    }while(condicion);
-let recomendacion = datos.slice();
-if (serie_pelicula_recom!=""){
-    recomendacion = recomendacion.filter((tipo) => tipo.serie_pelicula == serie_pelicula_recom)
+    //Session Storage
+    let nombre = prompt("Nombre del Jugador").toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
+    let jugadores;
+    let jugadores_SS = JSON.stringify(sessionStorage.getItem(`jugadores`))
+    if (jugadores_SS) {
+        jugadores = JSON.parse(jugadores_SS)
+        if(nombre in jugadores){
+        jugadores[nombre] += total
+        }
+    } else {
+        jugadores[nombre] = total;
+    }
+    sessionStorage.setItem('jugadores', JSON.stringify(jugadores))
+    
+    //Continuar?
+    let continuar = confirm(`Tu puntaje es de: ${total}, ${nombre}. ¿Desea jugar nuevamente?`)
+    if (continuar){
+        tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true}
+        actualizar_tablero()
+    }
 }
-if (plataforma_recom!=""){
-    recomendacion = recomendacion.filter((tipo) => tipo.plataforma == plataforma_recom)
+boton_final_juego.addEventListener("click", finalizar_juego)
+
+//Mostrar Puntajes
+function mostrar_puntajes(){
+    let jugadores_SS = sessionStorage.getItem('jugadores');
+    let jugadores = jugadores_SS ? JSON.parse(jugadores_SS) : {};
+    let puntajesElemento = document.getElementById('puntajes')
+    let puntajesTexto = ''
+    for (let nombre in jugadores) {
+        puntajesTexto += `${nombre}: ${jugadores[nombre]} puntos\n`;
+    }
+    puntajesElemento.innerText = puntajesTexto;
 }
-if (genero_recom!=""){
-    recomendacion = recomendacion.filter((tipo) => tipo.genero == genero_recom)
-}
-console.log(recomendacion)
+boton_puntos.addEventListener('click', mostrar_puntajes)

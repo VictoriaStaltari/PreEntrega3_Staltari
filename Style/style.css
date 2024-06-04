@@ -1,3 +1,13 @@
-h1{
-    color:red;
+#tablero div{
+    background-color: rgb(87, 231, 87);
+    padding: 20px;
+    margin: 5px;
+}
+#tablero{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#jugadas{
+    background-color: pink;
 }

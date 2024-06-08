@@ -78,6 +78,19 @@ actualizar_tablero()
 let contenedor_casilleros = document.getElementById("tablero")
 contenedor_casilleros.addEventListener("click",actualizar_tablero)
 
+//Mostrar Puntajes
+function mostrar_puntajes(){
+    let jugadores_SS = sessionStorage.getItem('jugadores');
+    let jugadores = JSON.parse(jugadores_SS)
+    let puntajesElemento = document.getElementById('puntajes')
+    let puntajes_texto = ''
+    for (let nombre in jugadores) {
+        puntajes_texto += `${nombre}: ${jugadores[nombre]} puntos\n`;
+    }
+    puntajesElemento.innerText = puntajes_texto;
+}
+boton_puntos.addEventListener('click', mostrar_puntajes)
+
 //Finalizar Juego
 function finalizar_juego(){
     let total = 0
@@ -105,18 +118,6 @@ function finalizar_juego(){
         tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true}
         actualizar_tablero()
     }
+    mostrar_puntajes()
 }
 boton_final_juego.addEventListener("click", finalizar_juego)
-
-//Mostrar Puntajes
-function mostrar_puntajes(){
-    let jugadores_SS = sessionStorage.getItem('jugadores');
-    let jugadores = JSON.parse(jugadores_SS)
-    let puntajesElemento = document.getElementById('puntajes')
-    let puntajes_texto = ''
-    for (let nombre in jugadores) {
-        puntajes_texto += `${nombre}: ${jugadores[nombre]} puntos\n`;
-    }
-    puntajesElemento.innerText = puntajes_texto;
-}
-boton_puntos.addEventListener('click', mostrar_puntajes)

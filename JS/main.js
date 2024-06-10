@@ -1,14 +1,16 @@
 condicion = true
 let jugadores= {}
-do{
-    let nombre=prompt("Ingrese el nombre del jugador").toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
-    if (nombre == ""){
-        condicion = false
-    }else{
-        jugadores[nombre] = 0
+document.getElementById('agregar_jugador').addEventListener('click', function() {
+    let nombre = document.getElementById('nombre').value.toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"");
+    if (nombre === "") {
+        condicion = false;
+    } else {
+        jugadores[nombre] = 0;
+        document.getElementById('nombre').value = ''; // Clear input field after adding
     }
-}while(condicion)
-sessionStorage.setItem("jugadores",JSON.stringify(jugadores))
+    sessionStorage.setItem("jugadores", JSON.stringify(jugadores));
+})
+
 let tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true}
 //Casillero 1
 let casillero1 = document.getElementById("casillero1")

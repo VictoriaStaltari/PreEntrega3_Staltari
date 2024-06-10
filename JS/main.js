@@ -101,25 +101,48 @@ function finalizar_juego(){
             total += parseInt(cas)
         }
     }
-    let nombre = prompt("Nombre del Jugador").toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"")
+    // Crear el label y el input
+    let label = document.createElement('label');
+    label.setAttribute('for', 'input_nombre_final');
+    label.innerText = 'Nombre del Jugador: ';
 
-    //Session Storage
-    let jugadores_SS = sessionStorage.getItem("jugadores")
-    jugadores = JSON.parse(jugadores_SS)
-    console.log(typeof jugadores)
-    if(nombre in jugadores){
-        jugadores[nombre] += total
-    } else {
-        jugadores[nombre] = total;
-    }
-    sessionStorage.setItem('jugadores', JSON.stringify(jugadores))
+    let input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('id', 'input_nombre_final');
+    input.setAttribute('required', true);
 
-    //Continuar?
-    let continuar = confirm(`Tu puntaje es de: ${total}, ${nombre}. ¿Desea jugar nuevamente?`)
-    if (continuar){
-        tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true}
-        actualizar_tablero()
-    }
-    mostrar_puntajes()
+    // Crear el botón de confirmación
+    let boton_confirmar = document.createElement('button');
+    boton_confirmar.innerText = 'Confirmar';
+    boton_confirmar.addEventListener('click', function() {
+        let nombre = input.value.toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"");
+        if (nombre !== "") {
+            let jugadores_SS = sessionStorage.getItem("jugadores");
+            jugadores = JSON.parse(jugadores_SS);
+
+            if (nombre in jugadores) {
+                jugadores[nombre] += total;
+            } else {
+                jugadores[nombre] = total;
+            }
+            sessionStorage.setItem('jugadores', JSON.stringify(jugadores));
+
+            let continuar = confirm(`Tu puntaje es de: ${total}, ${nombre}. ¿Desea jugar nuevamente?`);
+            if (continuar) {
+                tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true};
+                actualizar_tablero();
+            }
+            mostrar_puntajes();
+
+            document.body.removeChild(label);
+            document.body.removeChild(input);
+            document.body.removeChild(boton_confirmar);
+        }
+    });
+
+    // Añadir los elementos al DOM
+    document.body.appendChild(label);
+    document.body.appendChild(input);
+    document.body.appendChild(boton_confirmar);
 }
 boton_final_juego.addEventListener("click", finalizar_juego)

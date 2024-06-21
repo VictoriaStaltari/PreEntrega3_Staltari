@@ -1,7 +1,7 @@
 condicion = true
 let boton_restaurar_pts = document.getElementById("boton_rest_pts")
 let registro_jugadores = {}
-fetch("../JSON/puntajes.json")
+fetch("./JSON/puntajes.json")
 .then(response=>response.json())
 .then(data=>registro_jugadores=data)
 

@@ -2,18 +2,70 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Juego</title>
 </head>
 <body>
     <h1>El Preso</h1>
     <p>Bienvenidos al emocionante juego de "Escape de Presos". El objetivo del juego es evitar que los presos se escapen cerrando la mayor cantidad posible de celdas en el tablero.</p>
     <h2>Reglas del Juego</h2>
-    <p>En cada turno, el jugador lanzará dos dados, y la suma de los valores obtenidos determinará qué celdas pueden ser cerradas. No se pueden cerrar más de dos celdas por tirada, y las celdas seleccionadas para cerrar deben estar abiertas y su suma debe coincidir con la suma de los dados. Si la suma de los dados no coincide con los números de las celdas abiertas, no se podrá cerrar ninguna celda. Las celdas que no se puedan cerrar se consideran que contienen presos evadidos y sus valores se sumarán como puntos en contra del jugador. Al final del turno, los valores de las celdas no cerradas se suman como puntos negativos. Si un jugador logra cerrar todas las celdas en un turno, podrá restar 10 puntos de su anotación, si tiene algún punto. El juego continúa hasta que un jugador acumule 100 puntos o más, en cuyo caso será eliminado del juego.</p>
+    <p>En cada turno, el jugador lanzará dos dados, y la suma de los valores obtenidos determinará qué celdas pueden ser cerradas. No se pueden cerrar más de dos celdas por tirada, las celdas seleccionadas para cerrar deben estar abiertas y su suma debe coincidir con la suma de los dados. Las celdas que no se puedan cerrar se consideran que contienen presos evadidos y sus valores se sumarán como puntos en contra del jugador. Al final del turno, los valores de las celdas no cerradas se suman como puntos negativos. Si un jugador logra cerrar todas las celdas en un turno, podrá restar 10 puntos de su anotación. El jugador que tenga menos puntos al momento que no deseen jugar más, es el ganador.</p>
     <p>El juego se inicia ingresando los nombres de los jugadores, que se almacenan en la sesión. Cada celda en el tablero comienza en estado "abierto". Los jugadores pueden interactuar con el tablero haciendo clic en las celdas, lo cual cambia su estado a "cerrado". El tablero se actualiza visualmente para mostrar el estado actual de cada celda. Al hacer clic en el botón de "Lanzar Dados", se generan dos números aleatorios entre 1 y 6, cuya suma se muestra en pantalla. Los jugadores deben hacer clic en las celdas correspondientes para cerrarlas si la suma coincide con los dados, y el estado del tablero se actualiza para reflejar las celdas cerradas.</p>
     <p>Al finalizar el turno, el juego calcula los puntos negativos basados en las celdas no cerradas, los cuales se almacenan y se muestran en la pantalla de puntuaciones. Los jugadores pueden decidir si desean continuar jugando. En caso afirmativo, el tablero se reinicia para un nuevo turno. El juego incluye controles para lanzar los dados, actualizar el tablero, finalizar el turno y mostrar los puntajes acumulados de todos los jugadores.</p>
     <p>Disfruta del juego y evita que los presos se escapen cerrando la mayor cantidad posible de celdas. ¡Buena suerte!</p>
-    <button><a href="Pages/juego.html">Jugar</a></button>
+    <button id="boton_rest_pts">Restaurar Puntajes Guardados</button>
+    <div id="tablero">
+        <div id="contenedor_cas1" class="abierto" > 
+            <p>1</p>
+            <p id="casillero1"></p>
+        </div>
+        <div id="contenedor_cas2" class="abierto" > 
+            <p>2</p>
+            <p id="casillero2"></p>
+        </div>
+        <div id="contenedor_cas3" class="abierto" > 
+            <p>3</p>
+            <p id="casillero3"></p>
+        </div>
+        <div id="contenedor_cas4" class="abierto" > 
+            <p>4</p>
+            <p id="casillero4"></p>
+        </div>
+        <div id="contenedor_cas5" class="abierto" > 
+            <p>5</p>
+            <p id="casillero5"></p>
+        </div>
+        <div id="contenedor_cas6" class="abierto" > 
+            <p>6</p>
+            <p id="casillero6"></p>
+        </div>
+        <div id="contenedor_cas7" class="abierto" > 
+            <p>7</p>
+            <p id="casillero7"></p>
+        </div>
+        <div id="contenedor_cas8" class="abierto" > 
+            <p>8</p>
+            <p id="casillero8"></p>
+        </div>
+        <div id="contenedor_cas9" class="abierto" > 
+            <p>9</p>
+            <p id="casillero9"></p>
+        </div>
+    </div>
+    <div class="jugadas">
+        <button id="boton_dados">Tirar Dados</button>
+        <p id="dados"></p>
+        <label for="nombre">Nombre del jugador:</label>
+        <input type="text" id="nombre">
+        <button id="agregar_jugador">Agregar Jugador</button>
+        <button id="boton_puntos">Actualizar Puntajes</button>
+        <p id="puntajes"></p>
+        <button id="finalizar_juego">Finalizar Jugego</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="JS/main.js">
+    </script>
 </body>
 </html>

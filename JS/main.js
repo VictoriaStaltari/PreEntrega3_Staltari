@@ -1,4 +1,12 @@
 condicion = true
+let boton_restaurar_pts = document.getElementById("boton_rest_pts")
+let registro_jugadores = {}
+fetch("../JSON/puntajes.json")
+.then(response=>response.json())
+.then(data=>registro_jugadores=data)
+
+boton_restaurar_pts.addEventListener("click", ()=>{jugadores=registro_jugadores; sessionStorage.setItem('jugadores', JSON.stringify(jugadores))})   
+
 let jugadores= {}
 document.getElementById('agregar_jugador').addEventListener('click', function() {
     let nombre = document.getElementById('nombre').value.toLowerCase().replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ /g,"");
@@ -6,12 +14,13 @@ document.getElementById('agregar_jugador').addEventListener('click', function() 
         condicion = false;
     } else {
         jugadores[nombre] = 0;
-        document.getElementById('nombre').value = ''; // Clear input field after adding
+        document.getElementById('nombre').value = '';
     }
     sessionStorage.setItem("jugadores", JSON.stringify(jugadores));
 })
 
 let tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true}
+
 //Casillero 1
 let casillero1 = document.getElementById("casillero1")
 let contenedor_cas1 = document.getElementById("contenedor_cas1")
@@ -50,6 +59,7 @@ let contenedor_cas9 = document.getElementById("contenedor_cas9")
 contenedor_cas9.addEventListener("click", ()=> tablero[9] = false)
 
 let tablero_vista = [casillero1, casillero2, casillero3, casillero4, casillero5, casillero6, casillero7, casillero8, casillero9]
+let vista_tablero_cont = [contenedor_cas1, contenedor_cas2, contenedor_cas3, contenedor_cas4, contenedor_cas5, contenedor_cas6, contenedor_cas7, contenedor_cas8, contenedor_cas9]
 let boton_dados = document.getElementById("boton_dados")
 let boton_final_juego = document.getElementById("finalizar_juego")
 let boton_puntos = document.getElementById('boton_puntos')
@@ -71,8 +81,14 @@ function actualizar_tablero(){
     for (let a in tablero){
         if (tablero[a]){
             tablero_vista[a-1].innerText = "Abierto"
+            if (vista_tablero_cont[a-1].classList.contains("cerrado")){
+                vista_tablero_cont[a-1].classList.remove('cerrado')
+                vista_tablero_cont[a-1].classList.add('abierto')
+            }
         }else{
             tablero_vista[a-1].innerText = "Cerrado"
+            vista_tablero_cont[a-1].classList.remove('abierto')
+            vista_tablero_cont[a-1].classList.add('cerrado')
         }
     }
 }
@@ -101,6 +117,9 @@ function finalizar_juego(){
             total += parseInt(cas)
         }
     }
+    if (total==0){
+        total = -10
+    }
     // Crear el label y el input
     let label = document.createElement('label');
     label.setAttribute('for', 'input_nombre_final');
@@ -127,16 +146,24 @@ function finalizar_juego(){
             }
             sessionStorage.setItem('jugadores', JSON.stringify(jugadores));
 
-            let continuar = confirm(`Tu puntaje es de: ${total}, ${nombre}. ¿Desea jugar nuevamente?`);
-            if (continuar) {
-                tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true};
-                actualizar_tablero();
-            }
-            mostrar_puntajes();
+            Swal.fire({
+                title: `Tu puntaje es de: ${total}, ${nombre}`,
+                text: "¿Desea jugar nuevamente?",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, quiero jugar de nuevo',
+                cancelButtonText: 'No, gracias'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    tablero = {1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true}
+                    actualizar_tablero();
+                }
+            })
+            mostrar_puntajes()
 
-            document.body.removeChild(label);
-            document.body.removeChild(input);
-            document.body.removeChild(boton_confirmar);
+            document.body.removeChild(label)
+            document.body.removeChild(input)
+            document.body.removeChild(boton_confirmar)
         }
     });
 

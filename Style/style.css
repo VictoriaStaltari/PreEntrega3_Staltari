@@ -1,5 +1,10 @@
-#tablero div{
+.abierto{
     background-color: rgb(87, 231, 87);
+    padding: 20px;
+    margin: 5px;
+}
+.cerrado{
+    background-color: rgb(216, 36, 36);
     padding: 20px;
     margin: 5px;
 }
